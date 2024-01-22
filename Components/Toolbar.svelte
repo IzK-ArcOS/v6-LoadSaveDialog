@@ -7,14 +7,12 @@
 
   export let runtime: Runtime;
 
-  let saving = false;
   let size = 0;
   let folder = "";
-  let selected = "";
 
-  runtime.isSave.subscribe((v) => (saving = v));
-  runtime.selected.subscribe((v) => (selected = v));
-  runtime.contents.subscribe((v) => {
+  const { isSave, selected, contents: contentsStore } = runtime;
+
+  contentsStore.subscribe((v) => {
     if (!v) return;
 
     folder = pathToFriendlyName(v.scopedPath);
@@ -32,8 +30,8 @@
   }
 </script>
 
-<div class="toolbar">
-  {#if saving}
+<div class="toolbar" class:saving={$isSave}>
+  {#if $isSave}
     <NameInput {runtime} />
   {:else}
     <p class="count">
@@ -43,8 +41,8 @@
   {/if}
   <div class="confirm">
     <button class="cancel" on:click={exit}>Cancel</button>
-    <button class="confirm suggested" disabled={!selected} on:click={sendOff}>
-      {saving ? "Save" : "Open"}
+    <button class="confirm suggested" disabled={!$selected} on:click={sendOff}>
+      {$isSave ? "Save" : "Open"}
     </button>
   </div>
 </div>

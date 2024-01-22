@@ -15,8 +15,9 @@
   export let file: PartialArcFile;
   export let runtime: Runtime;
 
+  const { selected } = runtime;
+
   let date = "";
-  let selected = "";
   let mime = "";
   let icon = "";
 
@@ -32,8 +33,6 @@
     mime = m.replace(m[0], m[0].toUpperCase());
     icon = getMimeIcon(file.filename);
   });
-
-  runtime.selected.subscribe((v) => (selected = v));
 
   async function select() {
     await sleep(0);
@@ -51,7 +50,7 @@
   class="item file"
   on:click={select}
   on:dblclick={open}
-  class:selected={selected == file.filename}
+  class:selected={$selected == file.filename}
 >
   <div class="segment icon">
     <img src={icon} alt="" />

@@ -3,6 +3,7 @@ import { DefaultIcon } from "$ts/images/apps";
 import { ErrorIcon, WarningIcon } from "$ts/images/dialog";
 import { sendNotification } from "$ts/notif";
 import { Process } from "$ts/process";
+import { GlobalDispatch } from "$ts/process/dispatch/global";
 import { createErrorDialog } from "$ts/process/error";
 import { getParentDirectory, readDirectory } from "$ts/server/fs/dir";
 import { ProcessStack } from "$ts/stores/process";
@@ -56,6 +57,7 @@ export class Runtime extends AppRuntime {
 
 
   private async _init() {
+    GlobalDispatch.subscribe("fs-flush", () => this.refresh());
     this.navigate(this.path.get());
   }
 
@@ -77,7 +79,6 @@ export class Runtime extends AppRuntime {
     }
 
     this.contents.set(contents);
-    this.selected.set(undefined);
 
     return true;
   }
@@ -102,7 +103,7 @@ export class Runtime extends AppRuntime {
 
     createErrorDialog({
       title: "Location not found",
-      message: `Folder <code>${path}</code> does not exist on ArcFS.`,
+      message: `Folder <code>${path}</code> does not exist on your filesystem. Did you make a typo?`,
       image: ErrorIcon,
       buttons: [{
         caption: "Go Home", action: () => {
@@ -120,5 +121,13 @@ export class Runtime extends AppRuntime {
     const event = this.isSave.get() ? "save-file" : "open-file";
 
     ProcessStack.dispatch.dispatchToPid(pid, event, path);
+  }
+
+  public async Cancel() {
+    const pid = this.target.get();
+
+    ProcessStack.dispatch.dispatchToPid(pid, "ls-dialog-cancel");
+
+    await this.process.handler.kill(this.pid, true);
   }
 }

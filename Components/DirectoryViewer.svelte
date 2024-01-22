@@ -11,14 +11,11 @@
 
   export let runtime: Runtime;
 
+  const { failed, loading, contents: ContentsStore } = runtime;
+
   let contents: UserDirectory;
-  let loading = true;
-  let failed = false;
 
-  runtime.failed.subscribe((v) => (failed = v));
-  runtime.loading.subscribe((v) => (loading = v));
-
-  runtime.contents.subscribe(async (v) => {
+  ContentsStore.subscribe(async (v) => {
     contents = undefined;
     sleep(0);
     contents = v;
@@ -45,11 +42,11 @@
     {/if}
   {/if}
 
-  {#if failed}
+  {#if $failed}
     <Failed />
   {/if}
 
-  {#if loading}
+  {#if $loading}
     <Loading />
   {/if}
 </div>

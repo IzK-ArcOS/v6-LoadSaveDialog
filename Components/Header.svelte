@@ -4,9 +4,11 @@
 
   export let runtime: Runtime;
 
-  let path = "";
+  let pathStr = "";
 
-  runtime.path.subscribe((v) => v && (path = pathToFriendlyPath(v)));
+  const { path } = runtime;
+
+  path.subscribe((v) => (pathStr = pathToFriendlyPath(v)));
 </script>
 
 <div class="address-bar">
@@ -17,7 +19,7 @@
     >
       arrow_upward
     </button>
-    <div class="path">{path}</div>
+    <div class="path">{pathStr}</div>
   </div>
   <div class="sep" />
   <div class="portion">

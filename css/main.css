@@ -1,5 +1,6 @@
 @import url("./addressbar.css");
 @import url("./dirviewer.css");
+@import url("./toolbar.css");
 
 #LoadSaveDialog div.body {
   overflow: hidden;
