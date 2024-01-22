@@ -25,8 +25,7 @@
 <div
   class="directory-viewer"
   role="directory"
-  class:grid={$UserDataStore.appdata.FileManager &&
-    $UserDataStore.appdata.FileManager.grid}
+  class:grid={$UserDataStore.appdata.FileManager.grid}
 >
   <Header />
   {#if contents}
