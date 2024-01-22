@@ -1,9 +1,15 @@
 <script lang="ts">
-  import { App } from "$types/app";
+  import Titlebar from "$state/Desktop/Components/ProcessRenderer/Window/Titlebar.svelte";
+  import DirectoryViewer from "./Components/DirectoryViewer.svelte";
+  import Header from "./Components/Header.svelte";
+  import Toolbar from "./Components/Toolbar.svelte";
+  import { Runtime } from "./ts/runtime";
   import "./css/main.css";
 
-  export let app: App;
+  export let runtime: Runtime;
 </script>
 
-<h1>Hello, World!</h1>
-<p>Working! App {app.metadata.name}, version {app.metadata.version}.</p>
+<Titlebar app={runtime.appMutator} pid={runtime.pid} />
+<Header {runtime} />
+<DirectoryViewer {runtime} />
+<Toolbar {runtime} />

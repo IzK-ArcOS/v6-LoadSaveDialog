@@ -1,0 +1,17 @@
+@import url("./dirviewer/segment.css");
+@import url("./dirviewer/grid.css");
+@import url("./dirviewer/item.css");
+@import url("./dirviewer/header.css");
+@import url("./dirviewer/compact.css");
+@import url("./dirviewer/empty.css");
+@import url("./dirviewer/center.css");
+@import url("./dirviewer/dropper.css");
+
+#LoadSaveDialog div.directory-viewer {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - var(--titlebar-height) - 40px - 45px);
+  overflow-y: scroll;
+  padding: 15px;
+  gap: 5px;
+}

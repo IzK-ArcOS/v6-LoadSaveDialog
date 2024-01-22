@@ -1,0 +1,12 @@
+#LoadSaveDialog div.directory-viewer.compact {
+  gap: 2px;
+}
+
+#LoadSaveDialog div.directory-viewer.compact button {
+  gap: 5px;
+}
+#LoadSaveDialog div.directory-viewer.compact button div.segment.icon,
+#LoadSaveDialog div.directory-viewer.compact button div.segment.icon img {
+  width: 16px;
+  height: 16px;
+}

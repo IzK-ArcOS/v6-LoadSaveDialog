@@ -1,3 +1,12 @@
-window#appTemplate { /* Rename appTemplate to the ID of the app */
-  color: #f0f;
+@import url("./addressbar.css");
+@import url("./dirviewer.css");
+
+#LoadSaveDialog div.body {
+  overflow: hidden;
+  padding: 0;
+  height: 100%;
+}
+
+#LoadSaveDialog {
+  transition: all 0.3s, width 0s, height 0s !important;
 }
