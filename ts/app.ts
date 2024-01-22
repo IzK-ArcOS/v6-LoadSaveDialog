@@ -32,4 +32,5 @@ export const LoadSaveDialog: App = {
     maximize: false,
     close: true,
   },
+  isOverlay: true
 };
