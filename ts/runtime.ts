@@ -1,6 +1,6 @@
 import { AppRuntime } from "$ts/apps/runtime";
-import { DefaultIcon } from "$ts/images/apps";
 import { ErrorIcon, WarningIcon } from "$ts/images/dialog";
+import { ComponentIcon } from "$ts/images/general";
 import { sendNotification } from "$ts/notif";
 import { Process } from "$ts/process";
 import { GlobalDispatch } from "$ts/process/dispatch/global";
@@ -43,7 +43,7 @@ export class Runtime extends AppRuntime {
 
     mutator.update((v) => { // Adapt the window properties to the error dialog's data
       v.metadata.name = data.title;
-      v.metadata.icon = data.icon || DefaultIcon;
+      v.metadata.icon = data.icon || ComponentIcon;
 
       return v;
     })

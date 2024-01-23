@@ -1,4 +1,4 @@
-import { DefaultIcon } from "$ts/images/apps";
+import { ComponentIcon } from "$ts/images/general";
 import { App } from "$types/app";
 import AppSvelte from "../App.svelte";
 import { Runtime } from "./runtime";
@@ -9,7 +9,7 @@ export const LoadSaveDialog: App = {
     description: "Used for choosing files to load/save",
     author: "ArcOS Team",
     version: "2.0.0",
-    icon: DefaultIcon,
+    icon: ComponentIcon,
     appGroup: "internal",
     hidden: true
   },
