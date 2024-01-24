@@ -3,17 +3,7 @@
 
   export let runtime: Runtime;
 
-  let value = "";
-
-  function update() {
-    runtime.selected.set(value);
-  }
+  const { selected } = runtime;
 </script>
 
-<input
-  type="text"
-  class="name-input"
-  bind:value
-  on:input={update}
-  on:keyup={update}
-/>
+<input type="text" class="name-input" bind:value={$selected} />

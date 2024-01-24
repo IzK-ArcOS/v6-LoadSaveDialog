@@ -4,4 +4,5 @@ export interface LoadSaveDialogData {
   startDir?: string;
   isSave?: boolean;
   targetPid?: number;
+  saveName?: string;
 }

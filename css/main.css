@@ -15,3 +15,7 @@
   min-width: 460px !important;
   min-height: 310px !important;
 }
+
+#LoadSaveDialog::before {
+  display: none;
+}

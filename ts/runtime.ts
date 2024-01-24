@@ -20,7 +20,7 @@ export class Runtime extends AppRuntime {
   public contents = Store<UserDirectory>();
   public loading = Store<boolean>(true);
   public failed = Store<boolean>(false);
-
+  public data = Store<LoadSaveDialogData>();
   public isSave = Store<boolean>(false);
 
   constructor(app: App, mutator: AppMutator, process: Process) {
@@ -48,6 +48,7 @@ export class Runtime extends AppRuntime {
       return v;
     })
 
+    this.data.set(data);
     this.isSave.set(data.isSave);
     this.path.set(data.startDir || "./");
     this.target.set(data.targetPid || this.process.parentPid);
