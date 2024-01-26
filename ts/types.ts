@@ -5,4 +5,5 @@ export interface LoadSaveDialogData {
   isSave?: boolean;
   targetPid?: number;
   saveName?: string;
+  extensions?: string[];
 }

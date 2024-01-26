@@ -52,6 +52,7 @@ export class Runtime extends AppRuntime {
     this.isSave.set(data.isSave);
     this.path.set(data.startDir || "./");
     this.target.set(data.targetPid || this.process.parentPid);
+    this.selected.set(data.saveName || "");
 
     this._init();
   }

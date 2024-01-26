@@ -2,6 +2,7 @@
   import { Runtime } from "$apps/LoadSaveDialog/ts/runtime";
   import { formatBytes } from "$ts/bytes";
   import { getMimeIcon } from "$ts/server/fs/mime";
+  import { parseExtension } from "$ts/server/fs/util";
   import { RelativeTimeMod } from "$ts/stores/dayjs";
   import { ProcessStack } from "$ts/stores/process";
   import { sleep } from "$ts/util";
@@ -15,11 +16,12 @@
   export let file: PartialArcFile;
   export let runtime: Runtime;
 
-  const { selected } = runtime;
+  const { selected, data } = runtime;
 
   let date = "";
   let mime = "";
   let icon = "";
+  let incompatible = false;
 
   onMount(() => {
     dayjs.extend(relativeTime);
@@ -32,15 +34,23 @@
 
     mime = m.replace(m[0], m[0].toUpperCase());
     icon = getMimeIcon(file.filename);
+
+    const extension = parseExtension(file.scopedPath);
+
+    incompatible = $data.extensions && !$data.extensions.includes(extension);
   });
 
   async function select() {
+    if (incompatible) return;
+
     await sleep(0);
 
     runtime.selected.set(file.filename);
   }
 
   function open() {
+    if (incompatible) return;
+
     runtime.ConfirmFile();
     ProcessStack.kill(runtime.pid, true);
   }
@@ -51,6 +61,7 @@
   on:click={select}
   on:dblclick={open}
   class:selected={$selected == file.filename}
+  disabled={incompatible}
 >
   <div class="segment icon">
     <img src={icon} alt="" />
