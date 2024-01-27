@@ -9,6 +9,10 @@
   transition: opacity 0.3s;
 }
 
+#LoadSaveDialog div.directory-viewer button * {
+  transition: none !important;
+}
+
 #LoadSaveDialog div.directory-viewer button.selected {
   background-color: var(--accent-transparent) !important;
 }
