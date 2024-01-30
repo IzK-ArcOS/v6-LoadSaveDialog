@@ -5,7 +5,7 @@
   position: relative;
 }
 
-#LoadSaveDialog div.directory-viewer p.empty,
+#LoadSaveDialog div.directory-viewer.grid p.empty,
 #LoadSaveDialog div.directory-viewer.grid div.center-flex {
   position: absolute;
   top: 0;

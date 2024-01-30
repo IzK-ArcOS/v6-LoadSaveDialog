@@ -5,7 +5,6 @@
 @import url("./dirviewer/compact.css");
 @import url("./dirviewer/empty.css");
 @import url("./dirviewer/center.css");
-@import url("./dirviewer/dropper.css");
 
 #LoadSaveDialog div.directory-viewer {
   display: flex;
