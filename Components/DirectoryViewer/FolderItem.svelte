@@ -18,11 +18,7 @@
   }
 </script>
 
-<button
-  class="item folder"
-  class:selected={selected.includes(dir.scopedPath)}
-  on:dblclick={goHere}
->
+<button class="item folder" class:selected={selected.includes(dir.scopedPath)} on:dblclick={goHere}>
   <div class="segment icon">
     <img src={icon} alt="" />
   </div>

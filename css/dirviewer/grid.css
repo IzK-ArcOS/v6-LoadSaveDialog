@@ -45,10 +45,7 @@
   height: 32px;
 }
 
-#LoadSaveDialog
-  div.directory-viewer.grid
-  button
-  div.segment:not(.name):not(.icon) {
+#LoadSaveDialog div.directory-viewer.grid button div.segment:not(.name):not(.icon) {
   display: none;
 }
 

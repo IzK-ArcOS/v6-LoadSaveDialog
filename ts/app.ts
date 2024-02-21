@@ -11,7 +11,7 @@ export const LoadSaveDialog: App = {
     version: "2.0.0",
     icon: ComponentIcon,
     appGroup: "internal",
-    hidden: true
+    hidden: true,
   },
   runtime: Runtime,
   content: AppSvelte,
@@ -32,5 +32,5 @@ export const LoadSaveDialog: App = {
     maximize: false,
     close: true,
   },
-  isOverlay: true
+  isOverlay: true,
 };

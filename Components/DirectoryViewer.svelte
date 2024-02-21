@@ -22,11 +22,7 @@
   });
 </script>
 
-<div
-  class="directory-viewer"
-  role="directory"
-  class:grid={$UserDataStore.appdata.FileManager.grid}
->
+<div class="directory-viewer" role="directory" class:grid={$UserDataStore.appdata.FileManager.grid}>
   <Header />
   {#if contents}
     {#each contents.directories as dir}

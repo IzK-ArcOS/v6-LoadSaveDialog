@@ -34,29 +34,34 @@ export class Runtime extends AppRuntime {
         message: `No valid data was specified to use in the dialog. Aborting.`,
         image: WarningIcon,
         timeout: 3000,
-      })
+      });
     }
 
     const data: LoadSaveDialogData = process.args[0];
 
-    if (!app.isOverlay || !data) { stop(); return; }
+    if (!app.isOverlay || !data) {
+      stop();
+      return;
+    }
 
-    mutator.update((v) => { // Adapt the window properties to the error dialog's data
+    mutator.update((v) => {
+      // Adapt the window properties to the error dialog's data
       v.metadata.name = data.title;
       v.metadata.icon = data.icon || ComponentIcon;
 
       return v;
-    })
+    });
 
     this.data.set(data);
     this.isSave.set(data.isSave);
-    this.path.set(data.startDir && !data.startDir.startsWith("@client") ? data.startDir : "./" || "./");
+    this.path.set(
+      data.startDir && !data.startDir.startsWith("@client") ? data.startDir : "./" || "./"
+    );
     this.target.set(data.targetPid || this.process.parentPid);
     this.selected.set(data.saveName || "");
 
     this._init();
   }
-
 
   private async _init() {
     GlobalDispatch.subscribe("fs-flush", () => this.refresh());
@@ -103,16 +108,24 @@ export class Runtime extends AppRuntime {
   public FileNotFound(path = this.path.get()) {
     this.failed.set(true);
 
-    createErrorDialog({
-      title: "Location not found",
-      message: `Folder <code>${path}</code> does not exist on your filesystem. Did you make a typo?`,
-      image: ErrorIcon,
-      buttons: [{
-        caption: "Go Home", action: () => {
-          this.navigate("./")
-        }, suggested: true
-      }]
-    }, this.pid, true)
+    createErrorDialog(
+      {
+        title: "Location not found",
+        message: `Folder <code>${path}</code> does not exist on your filesystem. Did you make a typo?`,
+        image: ErrorIcon,
+        buttons: [
+          {
+            caption: "Go Home",
+            action: () => {
+              this.navigate("./");
+            },
+            suggested: true,
+          },
+        ],
+      },
+      this.pid,
+      true
+    );
   }
 
   public ConfirmFile() {
