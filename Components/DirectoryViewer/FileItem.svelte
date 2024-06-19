@@ -67,7 +67,7 @@
   disabled={incompatible}
 >
   <div class="segment icon">
-    <img src={icon} alt="" />
+    <img src={file.icon || icon} alt="" />
   </div>
   <div class="segment name" title={file.filename}>{file.filename}</div>
   <div class="segment type">{mime}</div>
