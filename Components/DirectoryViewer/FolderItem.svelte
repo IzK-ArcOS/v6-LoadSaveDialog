@@ -18,7 +18,14 @@
   }
 </script>
 
-<button class="item folder" class:selected={selected.includes(dir.scopedPath)} on:dblclick={goHere}>
+<button
+  class="item folder"
+  class:selected={selected.includes(dir.scopedPath)}
+  on:dblclick={goHere}
+  class:virtual={dir.virtual}
+  class:system={dir.system}
+  class:hidden-file={dir.hidden}
+>
   <div class="segment icon">
     <img src={icon} alt="" />
   </div>

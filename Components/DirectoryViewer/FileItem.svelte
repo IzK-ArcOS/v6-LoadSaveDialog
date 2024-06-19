@@ -61,6 +61,9 @@
   on:click={select}
   on:dblclick={open}
   class:selected={$selected == file.filename}
+  class:virtual={file.virtual}
+  class:system={file.system}
+  class:hidden-file={file.hidden}
   disabled={incompatible}
 >
   <div class="segment icon">

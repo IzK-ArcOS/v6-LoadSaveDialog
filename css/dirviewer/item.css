@@ -9,8 +9,40 @@
   transition: opacity 0.3s;
 }
 
+#LoadSaveDialog div.directory-viewer button.hidden-file {
+  opacity: 0.6;
+}
+
+#LoadSaveDialog div.directory-viewer button.virtual {
+  color: var(--clr-blue-fg);
+}
+
 #LoadSaveDialog div.directory-viewer button * {
   transition: none !important;
+}
+
+#LoadSaveDialog div.directory-viewer button div.segment {
+  position: relative;
+}
+
+#LoadSaveDialog div.directory-viewer button.virtual div.icon::before,
+#LoadSaveDialog div.directory-viewer button.system div.icon::before {
+  font-family: "Material Icons Round";
+  color: var(--win-bg);
+  background-color: var(--fg);
+  position: absolute;
+  bottom: -2px;
+  left: -2px;
+  font-size: 10px;
+  border-radius: 2px;
+}
+
+#LoadSaveDialog div.directory-viewer button.virtual div.icon::before {
+  content: "north_east";
+}
+
+#LoadSaveDialog div.directory-viewer button.system div.icon::before {
+  content: "settings";
 }
 
 #LoadSaveDialog div.directory-viewer button.selected {
